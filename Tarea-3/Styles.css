@@ -1,0 +1,96 @@
+/* Reset de márgenes, padding y box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo del cuerpo */
+body {
+    background-color: #f4f4f9;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Grid principal */
+.grid {
+    display: grid;
+    width: 90%;
+    max-width: 1200px;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: 
+        "header header header header"
+        "hero hero hero hero"
+        "hero hero hero hero"
+        "main main image image"
+        "main main extra extra"
+        "banner banner banner banner";
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo común para los elementos del grid */
+.grid > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: capitalize;
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+    transition: transform 0.3s;
+}
+
+.grid > *:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos específicos para cada área */
+.header { grid-area: header; background-color: #007BFF; }
+.menu { grid-area: menu; background-color: #6C757D; }
+.hero { grid-area: hero; background-color: #6610F2; }
+.main { grid-area: main; background-color: #28A745; color: #fff; }
+.banner { grid-area: banner; background-color: #17A2B8; }
+.extra { grid-area: extra; background-color: #E83E8C; }
+.image { grid-area: image; background-color: #FFC107; }
+
+/* Media query para pantallas menores a 850px */
+@media (max-width: 850px) {
+    .grid {
+        grid-template-areas: 
+            "header header header header"
+            "hero hero hero hero"
+            "menu main main main"
+            "menu main main main"
+            "menu banner banner banner"
+            "menu extra image image";
+    }
+}
+
+/* Media query para pantallas menores a 550px */
+@media (max-width: 550px) {
+    .grid {
+        grid-template-areas:
+            "header header header header"
+            "menu menu menu menu"
+            "hero hero hero hero"
+            "main main main main"
+            "banner banner banner banner"
+            "extra extra extra extra"
+            "image image image image";
+    }
+    .grid > * {
+        font-size: 18px;
+        padding: 15px;
+    }
+}
